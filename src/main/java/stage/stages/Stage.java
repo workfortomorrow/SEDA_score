@@ -8,6 +8,9 @@ import stage.tasks.Task;
  * @Date: Created in 2018/5/27
  */
 public interface Stage {
+
+
+
     public void init();
     public void start();
     public void stop();
