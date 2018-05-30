@@ -19,6 +19,6 @@ public interface Stage {
     public int pendingTasks();
     public void taskComplete();
     public StageManager getStageManager();
-    public void setStageManager();
+    public void setStageManager(StageManager stageManager);
 
 }
