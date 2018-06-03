@@ -28,6 +28,7 @@ public abstract class AbstractTask implements Task,TaskContext {
 
     @Override
     public void run() {
+
         onTaskStart();
         try{
             if(logger!=null&&logger.isTraceEnabled()){

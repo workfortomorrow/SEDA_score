@@ -13,6 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Date: Created in 2018/5/28
  */
 public class DefaultStage implements Stage {
+
     private static Logger logger = LoggerFactory.getLogger(DefaultStage.class);
     private StageManager stageManager;
     private Boolean started;

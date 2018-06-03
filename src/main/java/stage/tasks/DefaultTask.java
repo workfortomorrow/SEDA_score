@@ -7,6 +7,7 @@ import stage.stages.Stage;
  * @Date: Created in 2018/5/29
  */
 public class DefaultTask implements Task {
+
     private   Stage stage;
     @Override
     public void setCurrentStage(Stage stage) {
