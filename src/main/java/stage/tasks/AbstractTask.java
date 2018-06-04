@@ -34,7 +34,7 @@ public abstract class AbstractTask implements Task,TaskContext {
             if(logger!=null&&logger.isTraceEnabled()){
                 logger.trace(this.getClass().getSimpleName()+"  stage: "+this.stage.getName()+" is start.");
             }
-            onRun();
+            doRun();
             onTaskSuccess();
             if(logger!=null&&logger.isTraceEnabled()){
                 logger.trace(this.getClass().getSimpleName()+"  stage: "+this.stage.getName()+"is success.");
@@ -53,29 +53,39 @@ public abstract class AbstractTask implements Task,TaskContext {
         }
     }
 
+    protected void forward(String stageName,Task task){
+        if(task!=null&& task instanceof TaskContext ){
+            TaskContext taskContext = (TaskContext) task;
+            for(String key : getAttibutesName()){
+                taskContext.setAttribute(key,this.getAttribute(key,Object.class));
+            }
+            getCurrentStage().getStageManager().getStage(stageName).assign(task);
+        }
+    }
+
     protected void onTaskFinished(){};
 
     protected void onTaskFailure(TaskException e){};
 
     protected void onTaskSuccess(){};
 
-    protected void onRun() { };
+    protected void doRun() throws TaskException { };
 
     protected  void onTaskStart(){};
 
     @Override
     public void setAttribute(String name, Object value) {
-
+        this.taskContext.put(name,value);
     }
 
     @Override
     public <T> T getAttribute(String name, Class<T> classz) {
-        return null;
+        return  (T)this.taskContext.get(name);
     }
 
     @Override
     public Collection<String> getAttibutesName() {
-        return null;
+        return this.taskContext.keySet();
     }
 
     public Stage getCurrentStage() {
