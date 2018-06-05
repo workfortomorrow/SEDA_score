@@ -37,6 +37,7 @@ public class DataParsingTask extends AbstractTask {
                 if(event.getEventType() == XMLEvent.START_ELEMENT){
                     StartElement startElement = event.asStartElement();
                     if("rating".equals(startElement.getName().getLocalPart().toString())){
+                        System.out.println("评分 最高");
                         System.out.println(startElement.getAttributes().toString());
                     }
                 }
