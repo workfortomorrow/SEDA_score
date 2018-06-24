@@ -25,11 +25,7 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-          <dependency>
-              <groupId>org.slf4j</groupId>
-              <artifactId>slf4j-api</artifactId>
-              <version>1.6.1</version>
-          </dependency>
+
   </dependencies>
 
   <build>
@@ -71,5 +67,10 @@
 
   <modules>
     <module>stage-demo</module>
+    <!--
+    <module>stage-core</module>
+    <module>stage-common</module>
+    <module>stage-interface</module>
+    -->
   </modules>
 </project>
