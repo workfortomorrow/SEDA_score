@@ -57,6 +57,7 @@ public class DefaultStage implements Stage {
         }
         t.setCurrentStage(this);
         this.getThreadPool().submit(t);
+
     }
 
     @Override
