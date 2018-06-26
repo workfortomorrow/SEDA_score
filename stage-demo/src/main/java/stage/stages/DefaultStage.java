@@ -1,10 +1,13 @@
 package stage.stages;
 
+import com.sun.corba.se.spi.orbutil.threadpool.WorkQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import stage.StageManager;
+import stage.queue.StageWorkQueue;
 import stage.tasks.Task;
 
+import java.util.LinkedList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -19,7 +22,13 @@ public class DefaultStage implements Stage {
     private StageManager stageManager;
     private Boolean started;
     private String name;
+
+//    线程池
     private ExecutorService threadPool;
+//    自定义线程池
+    private LinkedList<Thread> threadPools;
+//    任务队列
+    private StageWorkQueue stageWorkQueue;
     //任务长度
     private AtomicInteger taskCount= new AtomicInteger(0);
     public DefaultStage(String name,ExecutorService threadPool){
